@@ -1,0 +1,108 @@
+.container{
+    margin: auto;
+    margin-top: 70px;
+    /* border: 3px solid black; */
+}
+.col-md-, .col-lg-4{
+    margin-bottom: 20px;
+}
+.sty{
+    font-size: 18px !important;
+    color: black !important;
+}
+.card-title{
+    margin-left: 48px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.grand-total{
+    font-size: 1.875rem;
+    font-weight: bold;  
+}
+.totalan{
+    font-size: 1.875rem;
+    font-weight: bold;   
+}
+
+.card-text {
+    
+    font-weight: 800;
+    position: absolute;
+    bottom: 5px;
+}
+
+.prod{
+    padding-top: 30px;
+    color: black;
+    font-weight: 900;
+    font-size: 20px;
+
+}
+
+.data{
+    color: black;
+    font-weight: 900;
+    font-size: 20px;
+    margin-right: 990px;
+    padding-top: 30px;
+}
+
+/*.card-body{
+  position: relative;
+}*/
+
+#h2 {
+    text-align: center;
+    margin-left: 20px;
+    text-decoration: underline;
+    font-weight: 900;
+}
+
+.Login {
+   margin-left: 900px;
+   color: white;
+   font-weight: 900;
+   font-size: 20px;
+}
+
+:hover .Login {
+    color: white;
+}
+.Sign{
+    color: white;
+    font-weight: 900; 
+    font-size: 20px;
+}
+
+:hover .Sign {
+    color: white;
+}
+
+#botona{
+ background-color: black;
+ color: white;
+  margin-left: 75px;
+    
+    /* padding: 17px; */
+    width: 162px;
+    
+}
+
+.num{
+    width: 80px;
+    height: 30px;
+    border: 3px solid black;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 5px;
+}
+.uk-border-circle{
+    width: 100px !important;
+    height: 100px !important;
+}
+.fa-cart-arrow-down{
+    color: white;
+    font-size: 50px;
+    cursor: pointer;
+    padding-left: 20px;
+}

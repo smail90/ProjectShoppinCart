@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <h1>Add Product</h1>
+    <form id="add-product-form">
+        <label for="product-name">Product Name:</label>
+        <input type="text" id="product-name" required><br>
+
+        <label for="product-price">Product Price:</label>
+        <input type="number" step="0.01" id="product-price" required><br>
+
+        <label for="product-Tmage">Product Image:</label>
+        <input type="file"  id="product-Image" required><br>
+
+        <label for="product-QUANTITY">Product QUANTITY:</label>
+        <input type="number"  id="product-QUANTITY" required><br>
+        
+        <button type="submit">Add Product</button>
+    </form>
+
+    <div id="add-products">
+
+    </div>
+    
+
+    <script>
+     
+       //// وظيفة لإنشاء معرّف منتج فريد بناءً على الطابع الزمني الحالي
+function generateProductId() {
+    return Date.now().toString();
+}
+
+//// kifash nsifat namodaj forum o idafat produit
+function addProduct(event) {
+    event.preventDefault();
+
+    // value li dakhal user mni 3amr forum
+    const productName = document.getElementById("product-name").value;
+    const productPrice = parseFloat(document.getElementById("product-price").value);
+    const productImage = document.getElementById("product-Image").value;
+    const productQuantity = parseInt(document.getElementById("product-QUANTITY").value);
+
+    // nzido produit khas bina
+    const productId = generateProductId();
+
+    // nediiro produit objet
+    const newProduct = {
+        id: productId,
+        name: productName,
+        price: productPrice,
+        image: productImage,
+        quantity: productQuantity,
+    };
+
+    //ndero var jdid bash nkhzno montajat f localstrage
+    const products = JSON.parse(localStorage.getItem("cartProducts")) || [];
+
+    // kanhato had produiyat f localstorage
+    products.push(newProduct);
+    // takhzin montajat haliya ila makhzon mahali  
+    localStorage.setItem("cartProducts", JSON.stringify(products));
+
+    // kaydik drict page li radi that fiha produit ta3k
+    window.location.href = "cartShopping.html";
+}
+ 
+ // nhasbo totalprice products m3a quentitie
+function grandTotal() {
+    let total = 0;
+    const products = JSON.parse(localStorage.getItem('cartProducts')) || [];
+
+    products.forEach((product) => {
+        total += product.price * product.quantity;
+    });
+
+    const grandTotalElement = document.querySelector('.grand-total');
+    grandTotalElement.innerText = `$${total.toFixed(2)}`;
+}
+// nmasho products min ba3d manzidohom
+function removeProduct(productId) {
+    let products = JSON.parse(localStorage.getItem('cartProducts')) || [];
+    products = products.filter((product) => product.id !== productId);
+    localStorage.setItem('cartProducts', JSON.stringify(products));
+
+    // nhasbo kolshi min ba3d manmsho products
+    grandTotal();
+}
+
+// ziyadat hadat min ndero forum sumbit
+document.getElementById("add-product-form").addEventListener("submit", addProduct);
+
+
+    </script>
+  <style>
+   
+   body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  text-decoration: underline;
+  margin-right: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 74px auto;
+  margin-left: 500px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 289px;
+  margin-left: 2px;
+}
+
+button[type="submit"] {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 235px;
+  margin-left: 40px;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+
+  
+
+  </style>
+
+
+</body>
+</html>
+
