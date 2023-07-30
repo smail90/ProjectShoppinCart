@@ -1,4 +1,5 @@
 <?php
+
 try {
     // Establishing a connection to MySQL
     $pdo = new PDO("mysql:host=localhost;dbname=shoppingcart", "root", "");
@@ -16,7 +17,7 @@ try {
     // Executing the query
     $pdo->exec($sql);
 
-    echo "Table 'logine' created successfully (if it didn't exist).";
+    // echo "Table 'logine' created successfully (if it didn't exist).";
 } catch (PDOException $a) {
     die("Error: couldn't connect to the database " . $a->getMessage());
 }
@@ -27,8 +28,10 @@ try {
 
     $stmt = $pdo->prepare($sql);
 
-    $UserName = filter_input(INPUT_POST, 'UserName', FILTER_SANITIZE_STRING);
-    $Password = filter_input(INPUT_POST, 'Password', FILTER_SANITIZE_STRING);
+    // $UserName = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $UserName = $_POST['username'];
+    $Password = $_POST['password'];
+    // $Password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
     $stmt->bindParam(":UserName", $UserName);
     $stmt->bindParam(":Password", $Password);
@@ -41,7 +44,6 @@ try {
 } catch (PDOException $p) {
     die("Error: " . $p->getMessage());
 }
-
 
 ?>
 
