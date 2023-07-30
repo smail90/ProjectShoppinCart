@@ -39,15 +39,15 @@ function addToCart(Add){
 
 
     // Accessing individual quantity fields
-    for(let i = 0; i < quantityFields.length; i++){
-        quantityFields[i].value = 1
-        quantityFields[i].addEventListener('change', totalCost)
+    for(let col = 0; col < quantityFields.length; col++){
+        quantityFields[col].value = 1
+        quantityFields[col].addEventListener('change', totalCost)
                 
     }
 
     // Accessing individual quantity fields
-    for(let x = 0; x < delete_buttons.length; x++){
-        delete_buttons[x].addEventListener('click', removeItem)
+    for(let son = 0; son < delete_buttons.length; son++){
+        delete_buttons[son].addEventListener('click', removeItem)
     }
 
     grandTotal()
